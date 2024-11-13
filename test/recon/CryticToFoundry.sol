@@ -10,10 +10,21 @@ contract CryticToFoundry is Test, TargetFunctions, FoundryAsserts {
     function setUp() public {
         setup();
 
-        targetContract(address(counter));
     }
 
     function test_crytic() public {
         // TODO: add failing property tests here for debugging
+        pSM3_transferOwnership(address(0x123));
     }
+
+    // forge test --match-test test_pSM3_transferOwnership_0 -vv 
+ 
+function test_pSM3_transferOwnership_0() public {
+  
+   vm.roll(23854);
+   vm.warp(227396);
+   vm.prank(0x0000000000000000000000000000000000010000);
+   pSM3_transferOwnership(0x0000000000000000000000000000000001ffc9a7);
+}
+		
 }

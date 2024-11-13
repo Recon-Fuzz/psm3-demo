@@ -1,3 +1,4 @@
+
 // SPDX-License-Identifier: GPL-2.0
 pragma solidity ^0.8.0;
 
@@ -6,36 +7,34 @@ import {BeforeAfter} from "./BeforeAfter.sol";
 import {Properties} from "./Properties.sol";
 import {vm} from "@chimera/Hevm.sol";
 
-abstract contract TargetFunctions is
-    BaseTargetFunctions,
-    Properties,
-    BeforeAfter
-{
-    function counter_increment() public {
-        counter.increment();
+abstract contract TargetFunctions is BaseTargetFunctions, Properties, BeforeAfter {
+
+    function pSM3_deposit(address asset, address receiver, uint256 assetsToDeposit) public {
+        pSM3.deposit(asset, receiver, assetsToDeposit);
     }
 
-    function counter_setNumber1(uint256 newNumber) public {
-        // example assertion test replicating testFuzz_SetNumber
-        try counter.setNumber(newNumber) {
-            if (newNumber != 0) {
-                t(counter.number() == newNumber, "number != newNumber");
-            }
-        } catch {
-            t(false, "setNumber reverts");
-        }
+    function pSM3_renounceOwnership() public {
+        pSM3.renounceOwnership();
     }
 
-    function counter_setNumber2(uint256 newNumber) public {
-        // same example assertion test as counter_setNumber1 using ghost variables
-        __before();
+    function pSM3_setPocket(address newPocket) public {
+        pSM3.setPocket(newPocket);
+    }
 
-        counter.setNumber(newNumber);
+    function pSM3_swapExactIn(address assetIn, address assetOut, uint256 amountIn, uint256 minAmountOut, address receiver, uint256 referralCode) public {
+        pSM3.swapExactIn(assetIn, assetOut, amountIn, minAmountOut, receiver, referralCode);
+    }
 
-        __after();
+    function pSM3_swapExactOut(address assetIn, address assetOut, uint256 amountOut, uint256 maxAmountIn, address receiver, uint256 referralCode) public {
+        pSM3.swapExactOut(assetIn, assetOut, amountOut, maxAmountIn, receiver, referralCode);
+    }
 
-        if (newNumber != 0) {
-            t(_after.counter_number == newNumber, "number != newNumber");
-        }
+    function pSM3_transferOwnership(address newOwner) public {
+        pSM3.transferOwnership(newOwner);
+        t(false, "false");
+    }
+
+    function pSM3_withdraw(address asset, address receiver, uint256 maxAssetsToWithdraw) public {
+        pSM3.withdraw(asset, receiver, maxAssetsToWithdraw);
     }
 }

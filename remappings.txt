@@ -1,2 +1,11 @@
-forge-std/=lib/forge-std/src/
+@openzeppelin/contracts/=lib/spark-psm/lib/openzeppelin-contracts/contracts/
 @chimera/=lib/chimera/src/
+ds-test/=lib/chimera/lib/forge-std/lib/ds-test/src/
+erc20-helpers/=lib/spark-psm/lib/erc20-helpers/src/
+erc4626-tests/=lib/spark-psm/lib/openzeppelin-contracts/lib/erc4626-tests/
+forge-std/=lib/forge-std/src/
+openzeppelin-contracts/=lib/spark-psm/lib/openzeppelin-contracts/
+spark-psm/=lib/spark-psm/
+sparklend-address-registry/=lib/spark-psm/lib/xchain-ssr-oracle/lib/sparklend-address-registry/
+xchain-helpers/=lib/spark-psm/lib/xchain-ssr-oracle/lib/xchain-helpers/src/
+xchain-ssr-oracle/=lib/spark-psm/lib/xchain-ssr-oracle/
